@@ -1,0 +1,63 @@
+﻿@page
+@using Microsoft.Extensions.Localization
+@using Cotur.Abp.ApiKeyAuthorization.Localization
+@using Cotur.Abp.ApiKeyAuthorization.Web.Menus
+@using Cotur.Abp.ApiKeyAuthorization.Web.Pages.ApiKeys
+@using Volo.Abp.AspNetCore.Mvc.UI.Bundling.TagHelpers
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Pages.Shared.Components.AbpPageToolbar
+@model Cotur.Abp.ApiKeyAuthorization.Web.Pages.ApiKeys.IndexModel
+@inject IStringLocalizer<ApiKeyAuthorizationResource> L
+@inject IPageLayout PageLayout
+
+@{
+    PageLayout.Content.Title = L["ApiKeys"].Value;
+    PageLayout.Content.BreadCrumb.Add("Applications");
+    PageLayout.Content.MenuItemName = ApiKeyAuthorizationMenuNames.ApiKeys;
+}
+
+@section styles {
+    <abp-style-bundle name="@typeof(IndexModel).FullName">
+        <abp-style src="/Pages/AbpPermissionManagement/permission-management-modal.css" />
+    </abp-style-bundle>
+}
+@section scripts {
+    <abp-script-bundle name="@typeof(IndexModel).FullName">
+        <abp-script src="/Pages/AbpPermissionManagement/permission-management-modal.js" />
+        <abp-script src="/Pages/ApiKeys/index.js" />
+    </abp-script-bundle>
+}
+
+@section content_toolbar {
+    <abp-button id="CreateApiKey" text="New API Key" icon="plus" size="Small" button-type="Primary" />
+}
+
+
+
+<abp-card>
+    <abp-card-body>
+        <abp-row class="mb-3">
+            <abp-column size-md="_12">
+                <form id="SearchForm" autocomplete="off">
+                    <div class="input-group">
+                        <input class="form-control page-search-filter-text" id="FilterText" placeholder="@L["Search"]" />
+                        <abp-button button-type="Primary" type="submit" icon="search" />
+                    </div>
+                </form>
+            </abp-column>
+        </abp-row>
+    </abp-card-body>
+</abp-card>
+<abp-card id="ApiKeysWrapper">
+    <abp-card-body>
+        <abp-table striped-rows="true" class="nowrap"></abp-table>
+    </abp-card-body>
+</abp-card>
+
+
+
+<style>
+    #DataTables_Table_0_filter {
+        display: none !important
+    }
+</style>

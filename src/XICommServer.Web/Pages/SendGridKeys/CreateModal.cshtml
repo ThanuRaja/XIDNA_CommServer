@@ -1,0 +1,41 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using XICommServer.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using XICommServer.Web.Pages.SendGridKeys
+@using XICommServer.SendGridKeys;
+@using System.Globalization
+@inject IHtmlLocalizer<XICommServerResource> L
+@model CreateModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/SendGridKeys/CreateModal" autocomplete="off">
+    <abp-modal id="SendGridKeyCreateModal">
+        <abp-modal-header title="@L["NewSendGridKey"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+                    
+
+            <abp-input asp-for="SendGridKey.Name"   />
+
+
+            <abp-input asp-for="SendGridKey.APIKey"   />
+
+
+            <abp-input asp-for="SendGridKey.DisplayName"   />
+
+
+            <abp-input asp-for="SendGridKey.EmailAddress"   />
+
+
+            <abp-input asp-for="SendGridKey.IsDefault"   />
+
+                    
+                
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

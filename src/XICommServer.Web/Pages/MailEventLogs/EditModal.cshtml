@@ -1,0 +1,57 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using XICommServer.Localization
+@using XICommServer.Web.Pages.MailEventLogs
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using XICommServer.MailEventLogs;
+@using System.Globalization
+@inject IHtmlLocalizer<XICommServerResource> L
+@model EditModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/MailEventLogs/EditModal" autocomplete="off">
+    <abp-modal id="MailEventLogEditModal">
+        <abp-modal-header title="@L["Update"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+                    <abp-input asp-for="Id" />
+                    <abp-input asp-for="MailEventLog.ConcurrencyStamp" hidden="true" suppress-label="true"/>
+                    
+            <abp-input asp-for="MailEventLog.Timestamp" value="@(Model.MailEventLog.Timestamp.ToString("yyyy-MM-dd"))" type="date" />
+
+
+            <abp-input asp-for="MailEventLog.SmtpId"   />
+
+
+            <abp-select asp-for="MailEventLog.EventType"   />
+
+
+            <abp-input asp-for="MailEventLog.Category"   />
+
+
+            <abp-input asp-for="MailEventLog.SendGridEventId"   />
+
+
+            <abp-input asp-for="MailEventLog.SendGridMessageId"   />
+
+
+            <abp-input asp-for="MailEventLog.TLS"   />
+
+
+            <abp-input asp-for="MailEventLog.MarketingCampainId"   />
+
+
+            <abp-input asp-for="MailEventLog.MarketingCampainName"   />
+
+
+            <abp-input asp-for="MailEventLog.IsLogSynced"   />
+
+                    
+                
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

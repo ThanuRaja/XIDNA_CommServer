@@ -1,0 +1,29 @@
+﻿@page
+@model XICommServer.Web.Pages.IndexModel
+@using XICommServer.Web.Menus
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Microsoft.AspNetCore.Mvc.Localization
+@using XICommServer.Localization
+@using Volo.Abp.Users
+@inject IPageLayout PageLayout
+@inject IHtmlLocalizer<XICommServerResource> L
+@inject ICurrentUser CurrentUser
+@{
+    ViewBag.PageTitle = L["Home"];
+    PageLayout.Content.Title = L["Home"].Value;
+    PageLayout.Content.MenuItemName = XICommServerMenus.Home;
+}
+
+<abp-card>
+    <abp-card-header>@L["Welcome"]</abp-card-header>
+    <abp-card-body>
+        
+        @if (!CurrentUser.IsAuthenticated)
+        {
+            <a abp-button="Primary" href="~/Account/Login">@L["Login"]</a>
+        }
+
+        <hr />
+        <p class="text-end"><a href="https://systemsdna.com" target="_blank">systemsdna</a></p>
+    </abp-card-body>
+</abp-card>

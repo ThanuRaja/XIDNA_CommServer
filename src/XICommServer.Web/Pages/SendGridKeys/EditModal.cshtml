@@ -1,0 +1,43 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using XICommServer.Localization
+@using XICommServer.Web.Pages.SendGridKeys
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using XICommServer.SendGridKeys;
+@using System.Globalization
+@inject IHtmlLocalizer<XICommServerResource> L
+@model EditModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/SendGridKeys/EditModal" autocomplete="off">
+    <abp-modal id="SendGridKeyEditModal">
+        <abp-modal-header title="@L["Update"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+                    <abp-input asp-for="Id" />
+                    <abp-input asp-for="SendGridKey.ConcurrencyStamp" hidden="true" suppress-label="true"/>
+                    
+
+            <abp-input asp-for="SendGridKey.Name"   />
+
+
+            <abp-input asp-for="SendGridKey.APIKey"   />
+
+
+            <abp-input asp-for="SendGridKey.DisplayName"   />
+
+
+            <abp-input asp-for="SendGridKey.EmailAddress"   />
+
+
+            <abp-input asp-for="SendGridKey.IsDefault"   />
+
+                    
+                
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

@@ -1,0 +1,136 @@
+/* Your Global Styles */
+
+:root .lpx-theme-dim, :root .lpx-theme-dark {
+    --lpx-logo: url('/images/logo/leptonx/logo-light.png');
+    --lpx-logo-icon: url('/images/logo/leptonx/logo-light-thumbnail.png');
+}
+
+:root .lpx-theme-light {
+    --lpx-logo: url('/images/logo/leptonx/logo-dark.png');
+    --lpx-logo-icon: url('/images/logo/leptonx/logo-dark-thumbnail.png');
+}
+
+.btn-primary {
+    --bs-btn-color: #fff !important;
+    --bs-btn-bg: black !important;
+    --bs-btn-border-color: black !important;
+    --bs-btn-hover-color: #fff !important;
+    --bs-btn-hover-bg: black !important;
+    --bs-btn-hover-border-color: black !important;
+    --bs-btn-focus-shadow-rgb: 83, 117, 255;
+    --bs-btn-active-color: #fff !important;
+    --bs-btn-active-bg: black !important;
+    --bs-btn-active-border-color: black !important;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff !important;
+    --bs-btn-disabled-bg: black !important;
+    --bs-btn-disabled-border-color: black !important;
+}
+
+.btn-primary {
+    --bs-btn-bg: black !important;
+}
+
+btn-primary {
+    --bs-btn-bg: black !important;
+}
+
+.btn-secondary {
+    --bs-btn-bg: black !important;
+}
+
+.btn:hover {
+    color: black !important;
+    background-color: #fff !important;
+    border-color: black !important;
+}
+
+.lpx-login-image-area {
+    min-height: 100vh;
+    max-height: 100vh;
+    background-image: linear-gradient(black, gray);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50vw;
+    height: 100vh;
+}
+
+.lpx-nav-menu .lpx-menu-item-link.selected .lpx-menu-item-icon, .lpx-nav-menu .lpx-menu-item-link.selected .dd-icon {
+    color: black !important;
+    opacity: 1;
+}
+
+.lpx-menu-item.selected .lpx-menu-item-icon, .lpx-menu-item.selected .dd-icon {
+    color: black !important;
+    opacity: 1;
+}
+
+.lpx-nav-menu .lpx-menu-item-link.selected .lpx-menu-item-icon, .lpx-nav-menu .lpx-menu-item-link.selected .dd-icon {
+    color: black !important;
+    opacity: 1;
+}
+
+.lpx-nav-menu .lpx-menu-item-link.selected .lpx-menu-item-icon, .lpx-nav-menu .lpx-menu-item-link.selected .dd-icon {
+    color: black !important;
+    opacity: 1;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+    border-bottom: 3px solid black !important;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+    border-bottom: 3px solid black;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: black !important;
+    background-color: var(--bs-nav-tabs-link-active-bg);
+    border-color: black !important;
+}
+
+.form-check-input:checked {
+    border-color: black !important;
+}
+
+.form-check-input:checked {
+    background-color: black !important;
+    border-color: black !important;
+}
+
+.pagination .page-item.active .page-link {
+    color: #fff !important;
+    border-radius: 0.5rem;
+    background-color: black !important;
+}
+
+a {
+    color: #2c5c34 !important;
+    text-decoration: underline;
+}
+
+.file-upload-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.file-upload-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+span.file-upload-container {
+    position: relative;
+    top: 12px;
+}

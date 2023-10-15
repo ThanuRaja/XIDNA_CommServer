@@ -1,0 +1,34 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using XICommServer.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using XICommServer.Web.Pages.MailEvents
+@using XICommServer.MailEvents;
+@using System.Globalization
+@inject IHtmlLocalizer<XICommServerResource> L
+@model CreateModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/MailEvents/CreateModal" autocomplete="off">
+    <abp-modal id="MailEventCreateModal">
+        <abp-modal-header title="@L["NewMailEvent"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+                    
+
+            <abp-input asp-for="MailEvent.SGMessageId"   />
+
+            <abp-input asp-for="MailEvent.CreatedAt" value="" type="date"/>
+
+
+            <abp-input asp-for="MailEvent.IsSuccess"   />
+
+                    
+                
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

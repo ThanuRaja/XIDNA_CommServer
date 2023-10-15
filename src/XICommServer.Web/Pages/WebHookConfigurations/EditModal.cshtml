@@ -1,0 +1,68 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using XICommServer.Localization
+@using XICommServer.Web.Pages.WebHookConfigurations
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using XICommServer.WebHookConfigurations;
+@using System.Globalization
+@inject IHtmlLocalizer<XICommServerResource> L
+@model EditModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/WebHookConfigurations/EditModal" autocomplete="off">
+    <abp-modal id="WebHookConfigurationEditModal">
+        <abp-modal-header title="@L["Update"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+                    <abp-input asp-for="Id" />
+                    <abp-input asp-for="WebHookConfiguration.ConcurrencyStamp" hidden="true" suppress-label="true"/>
+                    
+
+            <abp-input asp-for="WebHookConfiguration.ApiSignatureVerificationKey"   />
+
+
+            <abp-input asp-for="WebHookConfiguration.ClientWebhookUrl"   />
+
+            <hr />
+            <span>Webhook events:</span>
+            <abp-input asp-for="WebHookConfiguration.ListenProcessed"   />
+
+
+            <abp-input asp-for="WebHookConfiguration.ListenDeferred"   />
+
+
+            <abp-input asp-for="WebHookConfiguration.ListenDelivered"   />
+
+
+            <abp-input asp-for="WebHookConfiguration.ListenOpen"   />
+
+
+            <abp-input asp-for="WebHookConfiguration.ListenClick"   />
+
+
+            <abp-input asp-for="WebHookConfiguration.ListenBounce"   />
+
+
+            <abp-input asp-for="WebHookConfiguration.ListenDropped"   />
+
+
+            <abp-input asp-for="WebHookConfiguration.ListenSpamReport"   />
+
+
+            <abp-input asp-for="WebHookConfiguration.ListenUnsubscribe"   />
+
+
+            <abp-input asp-for="WebHookConfiguration.ListenGroupUnsubscribe"   />
+
+
+            <abp-input asp-for="WebHookConfiguration.ListenGroupResubscribe"   />
+
+            <hr/>
+            <abp-input asp-for="WebHookConfiguration.IsDefault"   />   
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

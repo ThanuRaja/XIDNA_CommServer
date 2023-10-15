@@ -1,0 +1,36 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using XICommServer.Localization
+@using XICommServer.Web.Pages.MailEvents
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using XICommServer.MailEvents;
+@using System.Globalization
+@inject IHtmlLocalizer<XICommServerResource> L
+@model EditModalModel
+@{
+    Layout = null;
+}
+
+<form data-ajaxForm="true" asp-page="/MailEvents/EditModal" autocomplete="off">
+    <abp-modal id="MailEventEditModal">
+        <abp-modal-header title="@L["Update"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+                    <abp-input asp-for="Id" />
+                    <abp-input asp-for="MailEvent.ConcurrencyStamp" hidden="true" suppress-label="true"/>
+                    
+
+            <abp-input asp-for="MailEvent.SGMessageId"   />
+
+            <abp-input asp-for="MailEvent.CreatedAt" value="@(Model.MailEvent.CreatedAt?.ToString("yyyy-MM-dd"))" type="date" />
+
+
+            <abp-input asp-for="MailEvent.IsSuccess"   />
+
+                    
+                
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

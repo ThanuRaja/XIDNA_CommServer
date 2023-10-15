@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="..\..\common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+        <RootNamespace>Cotur.Abp.ApiKeyAuthorization</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.VirtualFileSystem" Version="7.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="..\..\Cotur.Abp.ApiKeyAuthorization.abpmdl.json" />
+      <EmbeddedResource Include="..\..\Cotur.Abp.ApiKeyAuthorization.abpmdl.json" />
+    </ItemGroup>
+
+</Project>

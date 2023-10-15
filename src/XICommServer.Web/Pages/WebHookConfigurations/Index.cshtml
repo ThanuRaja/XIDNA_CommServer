@@ -1,0 +1,115 @@
+@page
+@using Microsoft.AspNetCore.Authorization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using XICommServer.Permissions
+@using XICommServer.Web.Pages.WebHookConfigurations
+@using XICommServer.Web.Menus
+@using Microsoft.AspNetCore.Mvc.Localization
+@using XICommServer.Localization
+@inject IHtmlLocalizer<XICommServerResource> L
+@inject IAuthorizationService Authorization
+@model IndexModel
+@inject IPageLayout PageLayout
+@{
+    PageLayout.Content.Title = L["WebHookConfigurations"].Value;
+    PageLayout.Content.MenuItemName = XICommServerMenus.WebHookConfigurations;
+}
+
+@section scripts
+{
+    <abp-script src="/Pages/WebHookConfigurations/index.js" />
+}
+
+@section content_toolbar {
+    <abp-button id="ExportToExcelButton" text="@L["ExportToExcel"].Value" icon="download" size="Small" button-type="Primary" />
+    @if (await Authorization.IsGrantedAsync(XICommServerPermissions.WebHookConfigurations.Create))
+    {
+        <abp-button id="NewWebHookConfigurationButton" text="@L["NewWebHookConfiguration"].Value" icon="plus" size="Small" button-type="Primary" />
+    }
+}
+
+<abp-card>
+    <abp-card-body>
+		<abp-row class="mb-3">
+            <abp-column size-md="_12">
+                <form id="SearchForm" autocomplete="off">
+                    <div class="input-group">
+                        <input class="form-control page-search-filter-text" id="FilterText" placeholder="@L["Search"]"/>
+                        <abp-button button-type="Primary" type="submit" icon="search"/>
+                    </div>
+                </form>
+            </abp-column>
+            <abp-column size-md="_12" class="mt-3">
+                <a href="javascript:;" id="AdvancedFilterSectionToggler" class="text-decoration-none">@L["SeeAdvancedFilters"]</a>
+            </abp-column>
+        </abp-row>
+
+        <abp-row id="AdvancedFilterSection" style="display: none;">
+            <abp-column size="_3">
+                <abp-input asp-for="ApiSignatureVerificationKeyFilter" label="@L["ApiSignatureVerificationKey"].Value" />
+            </abp-column>
+            <abp-column size="_3">
+                <abp-input asp-for="ClientWebhookUrlFilter" label="@L["ClientWebhookUrl"].Value" />
+            </abp-column>
+            <abp-column size="_3">
+                <abp-select asp-for="ListenProcessedFilter" label="@L["ListenProcessed"].Value" />
+            </abp-column>
+            <abp-column size="_3">
+                <abp-select asp-for="ListenDeferredFilter" label="@L["ListenDeferred"].Value" />
+            </abp-column>
+            <abp-column size="_3">
+                <abp-select asp-for="ListenDeliveredFilter" label="@L["ListenDelivered"].Value" />
+            </abp-column>
+            <abp-column size="_3">
+                <abp-select asp-for="ListenOpenFilter" label="@L["ListenOpen"].Value" />
+            </abp-column>
+            <abp-column size="_3">
+                <abp-select asp-for="ListenClickFilter" label="@L["ListenClick"].Value" />
+            </abp-column>
+            <abp-column size="_3">
+                <abp-select asp-for="ListenBounceFilter" label="@L["ListenBounce"].Value" />
+            </abp-column>
+            <abp-column size="_3">
+                <abp-select asp-for="ListenDroppedFilter" label="@L["ListenDropped"].Value" />
+            </abp-column>
+            <abp-column size="_3">
+                <abp-select asp-for="ListenSpamReportFilter" label="@L["ListenSpamReport"].Value" />
+            </abp-column>
+            <abp-column size="_3">
+                <abp-select asp-for="ListenUnsubscribeFilter" label="@L["ListenUnsubscribe"].Value" />
+            </abp-column>
+            <abp-column size="_3">
+                <abp-select asp-for="ListenGroupUnsubscribeFilter" label="@L["ListenGroupUnsubscribe"].Value" />
+            </abp-column>
+            <abp-column size="_3">
+                <abp-select asp-for="ListenGroupResubscribeFilter" label="@L["ListenGroupResubscribe"].Value" />
+            </abp-column>
+            <abp-column size="_3">
+                <abp-select asp-for="IsDefaultFilter" label="@L["IsDefault"].Value" />
+            </abp-column>
+        </abp-row>
+
+        <abp-table striped-rows="true" id="WebHookConfigurationsTable">
+            <thead>
+				<tr>
+					<th>@L["Actions"]</th>
+					<th>@L["ApiSignatureVerificationKey"]</th>
+					<th>@L["ClientWebhookUrl"]</th>
+					<th>@L["ListenProcessed"]</th>
+					<th>@L["ListenDeferred"]</th>
+					<th>@L["ListenDelivered"]</th>
+					<th>@L["ListenOpen"]</th>
+					<th>@L["ListenClick"]</th>
+					<th>@L["ListenBounce"]</th>
+					<th>@L["ListenDropped"]</th>
+					<th>@L["ListenSpamReport"]</th>
+					<th>@L["ListenUnsubscribe"]</th>
+					<th>@L["ListenGroupUnsubscribe"]</th>
+					<th>@L["ListenGroupResubscribe"]</th>
+					<th>@L["IsDefault"]</th>
+
+				</tr>
+            </thead>
+        </abp-table>
+    </abp-card-body>
+</abp-card>
