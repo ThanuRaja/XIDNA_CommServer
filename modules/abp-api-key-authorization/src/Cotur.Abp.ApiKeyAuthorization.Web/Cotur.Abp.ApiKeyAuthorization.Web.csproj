@@ -9,6 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Cotur.Abp.ApiKeyAuthorization.Web</RootNamespace>
     <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+	  <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
   </PropertyGroup>
 
   <ItemGroup>

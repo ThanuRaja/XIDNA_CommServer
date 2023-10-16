@@ -21,6 +21,8 @@ using Volo.Abp.BlobStoring.Database.EntityFrameworkCore;
 using Volo.Abp.Gdpr;
 using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Cotur.Abp.ApiKeyAuthorization.EntityFrameworkCore;
+using Volo.Abp;
+using XICommServer.Data;
 
 namespace XICommServer.EntityFrameworkCore;
 
@@ -72,5 +74,11 @@ public class XICommServerEntityFrameworkCoreModule : AbpModule
             options.UseSqlServer();
         });
 
+    }
+    public override void OnPostApplicationInitialization(ApplicationInitializationContext context)
+    {
+        var serviceProvider = context.ServiceProvider;
+        serviceProvider
+          .GetRequiredService<XICommServerDbMigrationService>().MigrateAsync().Wait();
     }
 }
