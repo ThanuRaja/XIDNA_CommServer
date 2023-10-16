@@ -113,20 +113,20 @@ public class XICommServerWebModule : AbpModule
             });
         });
 
-        if (!hostingEnvironment.IsDevelopment())
-        {
-            PreConfigure<AbpOpenIddictAspNetCoreOptions>(options =>
-            {
-                options.AddDevelopmentEncryptionAndSigningCertificate = false;
-            });
+        //if (!hostingEnvironment.IsDevelopment())
+        //{
+        //    PreConfigure<AbpOpenIddictAspNetCoreOptions>(options =>
+        //    {
+        //        options.AddDevelopmentEncryptionAndSigningCertificate = false;
+        //    });
 
-            PreConfigure<OpenIddictServerBuilder>(builder =>
-            {
-                builder.AddSigningCertificate(GetSigningCertificate(hostingEnvironment, configuration));
-                builder.AddEncryptionCertificate(GetSigningCertificate(hostingEnvironment, configuration));
-                builder.SetIssuer(new Uri(configuration["AuthServer:Authority"]));
-            });
-        }
+        //    PreConfigure<OpenIddictServerBuilder>(builder =>
+        //    {
+        //        builder.AddSigningCertificate(GetSigningCertificate(hostingEnvironment, configuration));
+        //        builder.AddEncryptionCertificate(GetSigningCertificate(hostingEnvironment, configuration));
+        //        builder.SetIssuer(new Uri(configuration["AuthServer:Authority"]));
+        //    });
+        //}
     }
 
     public override void ConfigureServices(ServiceConfigurationContext context)

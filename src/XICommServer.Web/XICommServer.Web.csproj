@@ -43,7 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\XIDNAComServer\modules\abp-api-key-authorization\src\Cotur.Abp.ApiKeyAuthorization.Web\Cotur.Abp.ApiKeyAuthorization.Web.csproj" />
+    <ProjectReference Include="..\..\modules\abp-api-key-authorization\src\Cotur.Abp.ApiKeyAuthorization.Web\Cotur.Abp.ApiKeyAuthorization.Web.csproj" />
     <ProjectReference Include="..\XICommServer.Application\XICommServer.Application.csproj" />
     <ProjectReference Include="..\XICommServer.HttpApi\XICommServer.HttpApi.csproj" />
     <ProjectReference Include="..\XICommServer.EntityFrameworkCore\XICommServer.EntityFrameworkCore.csproj" />

@@ -1,15 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\..\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <RootNamespace>XICommServer</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\XIDNAComServer\modules\abp-api-key-authorization\src\Cotur.Abp.ApiKeyAuthorization.Application.Contracts\Cotur.Abp.ApiKeyAuthorization.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\modules\abp-api-key-authorization\src\Cotur.Abp.ApiKeyAuthorization.Application.Contracts\Cotur.Abp.ApiKeyAuthorization.Application.Contracts.csproj" />
     <ProjectReference Include="..\XICommServer.Domain.Shared\XICommServer.Domain.Shared.csproj" />
   </ItemGroup>
 

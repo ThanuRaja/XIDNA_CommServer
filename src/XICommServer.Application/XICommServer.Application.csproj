@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\XIDNAComServer\modules\abp-api-key-authorization\src\Cotur.Abp.ApiKeyAuthorization.Application\Cotur.Abp.ApiKeyAuthorization.Application.csproj" />
+    <ProjectReference Include="..\..\modules\abp-api-key-authorization\src\Cotur.Abp.ApiKeyAuthorization.Application\Cotur.Abp.ApiKeyAuthorization.Application.csproj" />
     <ProjectReference Include="..\XICommServer.Domain\XICommServer.Domain.csproj" />
     <ProjectReference Include="..\XICommServer.Application.Contracts\XICommServer.Application.Contracts.csproj" />
   </ItemGroup>
