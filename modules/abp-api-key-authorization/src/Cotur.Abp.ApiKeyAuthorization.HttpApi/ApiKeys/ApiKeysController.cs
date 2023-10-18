@@ -64,74 +64,7 @@ public class ApiKeysController : ApiKeyAuthorizationController, IApiKeysAppServi
     {
         return _apiKeysAppService.DeleteAsync(id);
     }
-
-    [HttpGet]
-    [Route("generate-apiconfig-file")]
-    public async Task<JsonResult> GenerateApiConfigFile(Guid id)
-    {
-        var data = await _apiKeysAppService.ApikeysData(id);
-        
-        //// Show the IP 
-        var feature = HttpContext.Features.Get<IHttpConnectionFeature>();
-        //var localIPAddr = feature?.LocalIpAddress?.ToString();
-        //var localPort = feature?.LocalPort.ToString();
-
-        //var clientIpAddr = feature?.RemoteIpAddress?.ToString();
-        //var clientPort = feature?.RemotePort.ToString();
-
-        IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
-        IPAddress ipv4Address = ipHostInfo.AddressList[0];
-        var localPort = HttpContext.Request.Host.Port.ToString();
-        var localhostAddressName = HttpContext.Request.Host.Host.ToString();
-
-        var apiconfig = new ApiConfig();
-        var path = this.Environment.ContentRootPath;//AppContext.BaseDirectory;
-        var apikey = data.Key;
-        var resp = apiconfig.CreateAPIConfigFile(path, localhostAddressName, localPort=="" ? "443" : localPort , apikey);
-        
-        if(resp ==0)
-        {
-            var filePath = Path.Combine(path, "api_config.json");
-            //string contents = File.ReadAllText(@"C:\temp\test.txt");
-            using (StreamReader file = new StreamReader(filePath))
-            {
-                var fileData = file.ReadToEnd();
-                var dataInBytes = Encoding.UTF8.GetBytes(fileData);
-                var str = Encoding.Default.GetString(dataInBytes);
-
-                // Converting into file format...
-                string contentType = "application/json";
-                string fileName = "api_config.json";
-                var fileDataResp = new FileDataDto()
-                {
-                    FileContent = dataInBytes,
-                    FileContentType = contentType,
-                    FileName = fileName,
-                };
-                return new JsonResult(fileDataResp);
-            }
-
-        }
-        else
-        {
-            return new JsonResult("false");
-        }
-        
-    }
-
-    [HttpGet]
-    [Route("removing-apiconfig-file")]
-    public async Task<bool> RemoveApiConfigFile()
-    {
-
-        var path = AppContext.BaseDirectory;
-        var filePath = Path.Combine(path, "api_config.json");
-        System.IO.File.Delete(filePath);
-        return true;
-       
-
-    }
-
+    [HttpGet("get-api-key-data/{id}")]
     public Task<ApiKeyDto> ApikeysData(Guid Id)
     {
         throw new NotImplementedException();

@@ -15,7 +15,7 @@
     <abp-script src="/Pages/ApiKeys/updateModal.js" />
 }
 <style>
-    #XSense{
+    #XIComm{
         display:flex;
         justify-content:space-between;
         align-content:center;
@@ -32,9 +32,8 @@
             <abp-input asp-for="ApiKey.Name" />
             <abp-input asp-for="ApiKey.ExpireAt" type="date" />
     @*        <abp-input asp-for="ApiKey.ExpireAt" type="text" class="datepicker" />*@
-            <div id="XSense">
+            <div id="XIComm">
             <abp-input asp-for="ApiKey.Active" />
-             <abp-input asp-for="ApiKey.XSense_Cpp" label="XSense CPP"/>
             </div>
             
         </abp-modal-body>

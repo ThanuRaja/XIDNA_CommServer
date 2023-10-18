@@ -16,6 +16,4 @@ public class ApiKeyCreateDto
     public bool Active { get; set; }
 
     public DateTime? ExpireAt { get; set; }
-
-    public bool XSense_Cpp { get; set; }
 }

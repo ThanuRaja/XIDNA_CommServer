@@ -122,24 +122,8 @@
                             var date = Date.parse(expireAt);
                             return (new Date(date)).toLocaleDateString(abp.localization.currentCulture.name);
                         }
-                    },
-                    {
-                        title: l('XSenseCPP'),
-                        data: 'xSense_Cpp',
-                        render: function (data, type, row)
-                        {
-                            row.xsense_Cpp = $.fn.dataTable.render.text().display(row.xsense_Cpp);
-                            if (!row.xSense_Cpp)
-                            {
-                                return 'Not Applicable';
-                            }
-                            else {
-                                return '<button class="btn btn-info btn-sm downloadApiConfigFileClass" value="' + row.id + '">Download</button>';
-                            }
-                        }
                     }
-                    
-
+                   
                 ]
             );
         },
@@ -176,70 +160,6 @@
             _createModal.open();
         });
   
-
-
-
-    //For dowloading the api config file... 
-    $(document).on('click', '.downloadApiConfigFileClass', function (e) {
-        e.preventDefault();
-        abp.ajax({
-            type: 'GET',
-            url: '/api/api-keys/generate-apiconfig-file?id=' + e.target.value,
-        }).done(function (resp) {
-            console.log(resp);
-            if (resp == "false") {
-                abp.notify.error("Failed to download config file.");
-            }
-            else {
-                //Convert Base64 string to Byte Array.
-                var bytes = Base64ToBytes(resp.fileContent);
-                console.log("Bytes");
-                console.log(bytes);
-                //Convert Byte Array to BLOB.
-                var blob = new Blob([bytes], { type: resp.fileContentType });
-                console.log("Blob");
-                console.log(blob);
-                //Check the Browser type and download the File.
-                var isIE = false || !!document.documentMode;
-                if (isIE) {
-                    window.navigator.msSaveBlob(blob, resp.fileName);
-                } else {
-                    var url = window.URL || window.webkitURL;
-                    link = url.createObjectURL(blob);
-                    var a = $("<a />");
-                    a.attr("download", resp.fileName);
-                    a.attr("href", link);
-                    $("body").append(a);
-                    a[0].click();
-                    $("body").remove(a);
-                }
-                _dataTable.ajax.reload(null, false);
-                abp.notify.success(l('SuccessfullyDownloaded'));
-                removeConfigFile();
-            }
-        });
-
-    });
-  
-    function Base64ToBytes(base64) {
-        var binary_string = window.atob(base64);
-        var len = binary_string.length;
-        var bytes = new Uint8Array(len);
-        for (var i = 0; i < len; i++) {
-            bytes[i] = binary_string.charCodeAt(i);
-        }
-        return bytes.buffer;
-    }
-
-    //For removing the config file after download...
-    function removeConfigFile() {
-        abp.ajax({
-            type: 'GET',
-            url: '/api/api-keys/removing-apiconfig-file',
-        }).done(function (resp) {
-            console.log(resp);
-        });
-    }
 
     $("#SearchForm").submit(function (e) {
         console.log("asdasdasd");

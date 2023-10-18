@@ -14,21 +14,19 @@ public class ApiKey : FullAuditedAggregateRoot<Guid>, IMultiTenant
 
     public DateTime? ExpireAt { get; protected set; }
 
-    public bool XSense_Cpp {get; protected set;}
 
 protected ApiKey()
     {
         
     }
 
-    public ApiKey(Guid id, string key, string value, bool active , bool xsense_Cpp, DateTime? expireAt = null, Guid? tenantId = null) : base(id)
+    public ApiKey(Guid id, string key, string value, bool active , DateTime? expireAt = null, Guid? tenantId = null) : base(id)
     {
         TenantId = tenantId;
         SetName(key);
         SetKey(value);
         Active = active;
         ExpireAt = expireAt;
-        XSense_Cpp = xsense_Cpp;
     }
 
     protected virtual void SetKey(string value)

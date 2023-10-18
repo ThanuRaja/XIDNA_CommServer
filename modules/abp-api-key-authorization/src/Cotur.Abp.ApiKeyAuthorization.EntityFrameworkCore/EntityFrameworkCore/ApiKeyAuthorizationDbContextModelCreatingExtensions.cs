@@ -20,8 +20,7 @@ public static class ApiKeyAuthorizationDbContextModelCreatingExtensions
             b.Property(x => x.Name).IsRequired().HasMaxLength(ApiKeyConsts.MaxNameLength);
             b.Property(x => x.Key).IsRequired().HasMaxLength(ApiKeyConsts.MaxKeyLength);
             b.Property(x => x.Active).IsRequired();
-            b.Property(x => x.XSense_Cpp).IsRequired();
-            
+    
             b.HasIndex(x => x.Key).IsUnique();
             b.HasIndex(x => new {x.Key, x.Active, x.ExpireAt}).IsUnique();
         });

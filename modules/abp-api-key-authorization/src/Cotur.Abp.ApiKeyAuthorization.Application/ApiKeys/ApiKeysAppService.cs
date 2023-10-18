@@ -91,7 +91,6 @@ public class ApiKeysAppService :
             Active= apiKeyInfo.Active,
             Name= apiKeyInfo.Name,
             Key= apiKeyInfo.Key,
-            XSense_Cpp= apiKeyInfo.XSense_Cpp,
         };
         return apiKeyData;
     }

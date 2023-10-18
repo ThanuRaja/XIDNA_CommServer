@@ -9,6 +9,4 @@ public class ApiKeyDto : EntityDto<Guid>
     public string Key { get; set; }
     public bool Active { get; set; }
     public DateTime? ExpireAt { get; set; }
-    public bool XSense_Cpp { get; set; }
-
 }

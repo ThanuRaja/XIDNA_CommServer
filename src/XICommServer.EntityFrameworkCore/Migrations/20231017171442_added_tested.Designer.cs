@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 using XICommServer.EntityFrameworkCore;
@@ -12,9 +13,11 @@ using XICommServer.EntityFrameworkCore;
 namespace XICommServer.Migrations
 {
     [DbContext(typeof(XICommServerDbContext))]
-    partial class XICommServerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231017171442_added_tested")]
+    partial class addedtested
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
